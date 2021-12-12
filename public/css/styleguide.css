@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --header-height: 3rem;
+
+    /*========== Colors ==========*/
+
+    --primary-color: #FEA830;
+    --secondary-color: #E7CCC3;
+    --accent-color: #6A3B2B;
+    --title-color: #393448;
+    --text-color: #9D9EA0;
+    --white-color: #fff;
+    --container-color: #fff;
+
+    /*========== Font and typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+
+    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+    --h1-font-size: 4rem;
+    --h2-font-size: 3rem;
+    --h3-font-size: 2rem;
+    --h4-font-size: 1.5rem;
+    --h5-font-size: 1rem;
+    --body-font-size: 1rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+/*==================== BASE ====================*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: #F8F8F8;
+    color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn__primary {
+    padding: 12px 24px;
+    line-height: 32px;
+    font-weight: var(--font-regular);
+    background-color: var(--title-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    border-style: none;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+}
+
+.btn__login-primary {
+    width: 416px;
+    height: 56px;
+    line-height: 32px;
+    font-weight: var(--font-regular);
+    background-color: var(--title-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    border-style: none;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+}
+
+@media (max-width: 576px) {
+    .btn__login-primary{
+        width: 360px;
+    }
+}
+
+.btn__login-primary:hover{
+    box-shadow: 4px 8px 30px rgba(57, 52, 72, 0.25);
+    top: -2px;
+    color: var(--white-color);
+}
+
+.btn__primary:hover {
+    box-shadow: 4px 8px 30px rgba(57, 52, 72, 0.25);
+    top: -2px;
+    color: var(--white-color);
+}
+
+.btn__secondary {
+    padding: 12px 24px;
+    line-height: 32px;
+    font-weight: var(--font-regular);
+    background-color: transparent;
+    color: var(--title-color);
+    border-radius: 8px;
+    border-style: none;
+    border: solid 1px var(--title-color);
+    top: 0;
+    transition: top ease 0.5s;
+    position: relative;
+}
+
+.btn__secondary-white {
+    padding: 12px 24px;
+    line-height: 32px;
+    font-weight: var(--font-regular);
+    background-color: transparent;
+    color: var(--white-color);
+    border-radius: 8px;
+    border-style: none;
+    border: solid 1px var(--white-color);
+    top: 0;
+    transition: top ease 0.5s;
+    position: relative;
+}
+
+.btn__secondary:hover {
+    top: -2px;
+    color: var(--title-color);
+}
+
+.btn__secondary-white:hover {
+    top: -2px;
+    color: var(--white-color);
+}
+
+.btn__icon {
+    padding: 12px 24px;
+    line-height: 32px;
+    font-weight: var(--font-regular);
+    background-color: transparent;
+    color: var(--title-color);
+    border-radius: 8px;
+    border-style: none;
+}
+
+.btn__icon:hover {
+    color: var(--title-color);
+}
+
+.bg__white {
+    background-color: var(--white-color);
+}
+
+.section{
+    margin-bottom: 161px;
+}
+
+.circle{
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+}
