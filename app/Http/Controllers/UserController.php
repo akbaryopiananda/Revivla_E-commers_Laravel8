@@ -54,4 +54,13 @@ class UserController extends Controller
         Alert::success('Sukses', 'Data Password User Berhasil diedit');
         return redirect()->route('editpassword');
     }
+    public function customer(){
+        $data = Users::paginate(10);
+
+        return view('customer.index', compact('data'));
+    }
+    public function detailuser($id){
+        $data = Users::where('id',$id)->get();
+        return view('customer.detailuser',compact('data'));
+    }
 }

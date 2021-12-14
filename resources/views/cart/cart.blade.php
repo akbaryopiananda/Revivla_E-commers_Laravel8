@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="container">
                 <div class="cart__bag mb-4">
-                    <h1 class="form__title mb-5">CheckOut  Details</h1>
+                    <h1 class="form__title mb-5">Check Out  Details</h1>
                     <div class="col-md-12">
                         <a href="/produk" class="btn__primary ms-0 ms-lg-4"> <i class="fa fa-arrow-left"></i> Belanja lagi</a>
                     </div>   
@@ -26,21 +26,16 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-12">
+                        <div class="col-lg-2 col-12">
                             <div class="description">
                                 <h1 class="cart__name">{{ $pesanan_detail->produk->nama }}</h1>
                             </div>
                         </div>
 
-                        <div class="col-lg-1 col-12">
-                            <div class="quantity mb-lg-0 mb-3">
-                                <button class="plus-btn cart__quantity" type="button" name="button">
-                                    <img src="{{ asset('/img/logo/plus.svg')}}" alt="" />
-                                </button>
-                                <input type="text" name="name" value="{{ $pesanan_detail->jumlah }}">
-                                <button class="minus-btn cart__quantity" type="button" name="button">
-                                    <img src="{{ asset('/img/logo/minus.svg')}}" alt="" />
-                                </button>
+                        <div class="col-lg-2 col-12">
+                            <div class="total__price">
+                                <p class="login__subtitle mb-4 d-lg-block d-none">Jumlah</p>
+                                <p>{{ $pesanan_detail->jumlah }}</p>
                             </div>
                         </div>
 
@@ -60,7 +55,7 @@
                                 </h1>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-12">
+                        <div class="col-lg-1 col-12">
                             <div class="button__action">
                                 <form action="{{ url('check_out') }}/{{ $pesanan_detail->id }}" method="post">
                                     
@@ -85,7 +80,7 @@
     <div class="form__cart mt-5 section">
         <div class="container">
             <div class="row">
-                <h1 class="form__title mb-">Shipping Details</h1>
+                <h1 class="form__title mb-"></h1>
                 <div class="d-lg-flex d-block mt-5">
                     <div class="col-lg-3 col-12 me-5">
                         {{-- <div class="d-flex flex-column mb-3">
@@ -121,7 +116,7 @@
                         </div> --}}
                     </div>
 
-                    <div class="col-lg-5 col-12 mb-lg-0 mb-4">
+                    <div class="col-lg-4 col-12 mb-lg-0 mb-4">
                         <div class="total__price d-flex d-lg-block justify-content-between mt-lg-0 mt-5">
                             <h1 class="form__title mb-2">Total Harga</h1>
                             <h1 class="form__totaL">Rp. {{ number_format($pesanan->jumlah_harga) }}</h1>
@@ -139,6 +134,7 @@
             </div>
         </div>
     </div>
+    
     @endif
     @endsection
     @section('scripts')

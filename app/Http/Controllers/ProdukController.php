@@ -12,4 +12,14 @@ class ProdukController extends Controller
         $data = Products::paginate(20);
         return view('product.products',compact('data'));
     }
+    public function women(){
+        $data = Products::where('kategori_id', '!=',2)->get();
+        
+        return view('product.women',compact('data'));
+    }
+    public function men(){
+        $data = Products::where('kategori_id', '!=',1)->get();
+        
+        return view('product.men',compact('data'));
+    }
 }

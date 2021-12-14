@@ -10,7 +10,7 @@ use Alert;
 class ProductsController extends Controller
 {
     public function index(){
-        $data = Products::with('kategori')->paginate(2);
+        $data = Products::with('kategori')->paginate(5);
         return view('admin.product.index', compact('data'));
     }
     public function editproduct($id){
@@ -41,10 +41,12 @@ class ProductsController extends Controller
         return redirect()->route('products');
     }
     public function addproduct(){
-        return view('admin.product.add');
+        $data = Category::all();
+        return view('admin.product.add',compact('data'));
     }
     public function tambahproduct(Request $request){
         $data = new Products();
+        $pilih = Category::all();
         $data->nama = $request['nama'];
         $data->deskripsi = $request['deskripsi'];
         $data->harga = $request['harga'];
@@ -61,6 +63,6 @@ class ProductsController extends Controller
     }
     public function showproduct($id){
         $data = Products::find($id);
-        return view('admin.product.show', compact('data'));
+        return view('admin.product.show', compact('data',));
     }
 }

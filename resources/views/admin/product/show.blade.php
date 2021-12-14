@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="kategori_id">Kategori</label>
-                                <input type="text"  name="kategori_id" value="{{ $data->kategori_id }}" class="form-control" disabled>
+                                <input type="text"  name="kategori_id" value="{{ $data->kategori->kategori }}" class="form-control" disabled>
                             </div>
                             <a href="/product">
                             <div class="d-grid gap-2 col-6 mx-auto">

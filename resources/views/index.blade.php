@@ -20,7 +20,7 @@
                                 Fashion
                                 Only On Revivla.co</h1>
                         </div>
-                        <a class="btn__primary" data-aos="fade-up" data-aos-duration="1000">Explore Now</a>
+                        <a href="/produk" class="btn__primary" data-aos="fade-up" data-aos-duration="1000">Explore Now</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <div class="hero__heading">
                             <h1 class="hero__title" data-aos="fade-down">Improve Your Confident With Best Dress</h1>
                         </div>
-                        <a class="btn__primary" data-aos="fade-up">Explore Now</a>
+                        <a href="/produk" class="btn__primary" data-aos="fade-up">Explore Now</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <div class="hero__heading">
                             <h1 class="hero__title" data-aos="fade-down">Look Good To Every Generation</h1>
                         </div>
-                        <a class="btn__primary" data-aos="fade-up">Explore Now</a>
+                        <a href="/produk" class="btn__primary" data-aos="fade-up">Explore Now</a>
                     </div>
                 </div>
             </div>
@@ -59,75 +59,34 @@
 
         <div id="slider" class="trending__product swipe">
             <div class="row swipe-wrap">
+                @foreach ($produks as $produk)
+
                 <div class="col-12 col-lg-4 col-md-6 mb-lg-0 mb-4">
                     <div class="card__">
                         <div class="product__img">
                             <a href="#">
-                                <img class="product__image" src="{{ ('/img/product/product-1.png')}}" alt="">
+                                <img class="product__image" src="/img/product/{{ $produk->gambar }}" alt="">
                             </a>
                         </div>
                         <div class="product__detail">
                             <a href="">
-                                <h1 class="product__name">Polkadot Dress</h1>
+                                <h1 class="product__name">{{ $produk->nama }}</h1>
                             </a>
-                            <p class="product__desc">Best seller dress for trendy fashion at this moment.</p>
+                            <p class="product__desc">{{ $produk->deskripsi }}</p>
                         </div>
                         <div class="cart-action">
-                            <button type="submit" class="btn__primary"><span class="me-2">Add To Cart</span>
-                                <img src="{{ ('/img/logo/Buy-White.svg')}}" alt="">
-                            </button>
-                            <h1 class="product__price">
-                                300K
-                            </h1>
+                            <a href="{{ url('pesanan')}}/{{ $produk->id }}">
+                                <button type="submit" class="btn__primary">
+                                    <img src="{{ ('/img/logo/Buy-White.svg')}}" alt="">
+                                </button>
+                            </a>
+                            <h4 class="product__price">
+                               Rp. {{ number_format($produk->harga) }}
+                            </h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-4 col-md-6 mb-lg-0 mb-4">
-                    <div class="card__">
-                        <div class="product__img">
-                            <a href="#">
-                                <img class="product__image" src="{{ ('/img/product/product-2.png')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="product__detail">
-                            <a href="">
-                                <h1 class="product__name">Polkadot Dress</h1>
-                            </a>
-                            <p class="product__desc">Best seller dress for trendy fashion at this moment.</p>
-                        </div>
-                        <div class="cart-action">
-                            <button type="submit" class="btn__primary"><span class="me-2">Add To Cart</span>
-                                <img src="{{ ('/img/logo/Buy-White.svg')}}" alt="">
-                            </button>
-                            <h1 class="product__price">
-                                300K
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4 col-md-6">
-                    <div class="card__">
-                        <div class="product__img">
-                            <a href="#">
-                                <img class="product__image" src="{{ ('/img/product/product-3.png')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="product__detail">
-                            <a href="">
-                                <h1 class="product__name">Polkadot Dress</h1>
-                            </a>
-                            <p class="product__desc">Best seller dress for trendy fashion at this moment.</p>
-                        </div>
-                        <div class="cart-action">
-                            <button type="submit" class="btn__primary"><span class="me-2">Add To Cart</span>
-                                <img src="{{ ('/img/logo/Buy-White.svg')}}" alt="">
-                            </button>
-                            <h1 class="product__price">
-                                300K
-                            </h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -141,7 +100,7 @@
             <div class="col-lg-3 col-6 mb-lg-0 mb-4">
                 <div class="data__statistik">
                     <div class="data__number">
-                        <h1 class="data__total">526 +</h1>
+                        <h1 class="data__total">{{ $pesan }} +</h1>
                         <p class="data__name">Buyer</p>
                     </div>
                 </div>
@@ -149,7 +108,7 @@
             <div class="col-lg-3 col-6">
                 <div class="data__statistik">
                     <div class="data__number">
-                        <h1 class="data__total">51 +</h1>
+                        <h1 class="data__total">{{ $user }}+</h1>
                         <p class="data__name">New User</p>
                     </div>
                 </div>
@@ -157,7 +116,7 @@
             <div class="col-lg-3 col-6">
                 <div class="data__statistik">
                     <div class="data__number">
-                        <h1 class="data__total">5 +</h1>
+                        <h1 class="data__total">{{ $category }} +</h1>
                         <p class="data__name">Product Categories</p>
                     </div>
                 </div>
@@ -165,7 +124,7 @@
             <div class="col-lg-3 col-6">
                 <div class="data__statistik">
                     <div class="data__number">
-                        <h1 class="data__total">65 +</h1>
+                        <h1 class="data__total">{{ $pesan + $user }} +</h1>
                         <p class="data__name">Loyal Buyer</p>
                     </div>
                 </div>
@@ -189,7 +148,7 @@
                             <h1 class="categories__name">Women Catalog</h1>
                             <p class="categories__detail">Best seller dress for trendy fashion at this moment.</p>
                         </div>
-                        <a href="#" class="btn__secondary-white"><span class="me-2">Open Catalog</span>
+                        <a href="/produk/women" class="btn__secondary-white"><span class="me-2">Open Catalog</span>
                             <img src="{{ ('/img/logo/Arrow - Right.svg')}}" alt="">
                         </a>
                     </div>
@@ -204,7 +163,7 @@
                             <h1 class="categories__name">Men Catalog</h1>
                             <p class="categories__detail">Best seller dress for trendy fashion at this moment.</p>
                         </div>
-                        <a href="#" class="btn__secondary-white"><span class="me-2">Open Catalog</span>
+                        <a href="/produk/men" class="btn__secondary-white"><span class="me-2">Open Catalog</span>
                             <img src="{{ ('/img/logo/Arrow - Right.svg')}}" alt="">
                         </a>
                     </div>
@@ -225,7 +184,7 @@
                     <div class="cta__title">
                         <h1 class="cta__name mb-5">Go Now Because Style is Number 1</h1>
                         <div class="cta__button">
-                            <a href="#" class="btn__primary">Explore Now</a></div>
+                            <a href="/produk" class="btn__primary">Explore Now</a></div>
                     </div>
                 </div>
             </div>

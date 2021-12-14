@@ -13,11 +13,11 @@
                     <div class="row swipe-wrap">
                         <div class="col-lg-12">
                             <ul class="categories__list">
-                                <li class="mb-3 btn__primary">
-                                    <a class="text-white p-auto" href="">All Product</a>
+                                <li class="mb-3 btn__secondary">
+                                    <a class="list__name" href="/produk">All Product</a>
                                 </li>
-                                <li class="mb-3 btn__secondary ">
-                                    <a class="list__name" href="/produk/women">Women</a>
+                                <li class="mb-3 btn__primary ">
+                                    <a class="text-white p-auto" href="/produk/women">Women</a>
                                 </li>
                                 <li class="mb-3 btn__secondary ">
                                     <a class="list__name" href="/produk/men">Men</a>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    </div>
+
     @endsection
     @section('scripts')
     @parent

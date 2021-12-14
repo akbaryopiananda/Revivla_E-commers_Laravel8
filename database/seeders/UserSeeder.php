@@ -15,11 +15,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::truncate();
-        User::create([
-            'name' => 'Revivla',
-            'nomor' => '08214123256',
-            'alamat' => 'Jl. Malang kota',
-            'profil' => 'product-2.png',
+        User::insert([
+            'name' => 'Akbar Sabila Yopiananda',
+            'nomor' => '089677563081',
+            'alamat' => 'Jepara, Jawa Tengah Indonesia',
+            'profil' => 'akyp.png',
             'level' => 'admin',
             'email' => 'revivla@gmail.com',
             'password' => bcrypt('revivla'),

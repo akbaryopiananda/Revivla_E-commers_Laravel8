@@ -5,10 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ URL::asset('/img/logo/Revivla.co.svg')}}" type = "image/x-icon">
+    <link rel="icon" href="{{ URL::asset('/img/logo/Revivla.co.svg')}}" type="image/x-icon">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/styleguide.css') }}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -32,12 +31,12 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
-    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
-
+    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}"> {{-- Jquery --}}
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <title>Revivla.co E-commerce</title>
 </head>
 
-<body class="">
+<body>
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
@@ -50,8 +49,7 @@
                 <a class="navbar-brand" href="/">
                     <img src="{{ URL::asset('/img/logo/Revivla.co.svg')}}" alt="">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse text__center" id="navbarText">
@@ -71,114 +69,95 @@
                     @if (Auth::user())
                     <span class="navbar__button ms-0 ms-lg-2 d-flex d-lg-block flex-column">
                         <a href="/check_out" class="btn__icon me-2 mb-2"><span class="me-2">Cart</span>
-                            <img src="{{ URL::asset('/img/logo/Buy.svg')}}" alt="">
-                            <?php
+                    <img src="{{ URL::asset('/img/logo/Buy.svg')}}" alt="">
+                    <?php
                                 $pesanan_utama = \App\Models\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first(); 
                                 if(!empty($pesanan_utama)){
                                     $notif = App\Models\PesananDetail::where('pesanan_id',$pesanan_utama->id)->count();    
                                 }
                             ?>
-                            @if(!empty($pesanan_utama))
-                            <span class="badge badge-danger">{{ $notif }}</span>
-                            @endif
+                        @if(!empty($pesanan_utama))
+                        <span class="badge badge-danger">{{ $notif }}</span> @endif
                         </a>
-                    </span>
-                    @endif
-                    @if (Auth::guest())
-                    <div>
-                        <a href="/register" class="btn__secondary me-2 mb-2">Sign Up</a>
-                        <a href="/login" class="btn__primary">Sign In</a>
-                    </div>
-                     
-                    @endif
-                    @if (Auth::user())
-                    <div class="dropdown" >
-                        <button class="btn " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('img/profile/') }}/{{ Auth::user()->profil }}" style="width:40px;border-radius: 50%" alt="Your Profile">
+                        </span>
+                        @endif @if (Auth::guest())
+                        <div>
+                            <a href="/register" class="btn__secondary me-2 mb-2">Sign Up</a>
+                            <a href="/login" class="btn__primary">Sign In</a>
+                        </div>
+
+                        @endif @if (Auth::user())
+                        <div class="dropdown">
+                            <button class="btn__secondary me-1 mb-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        
+                            
+                                Hi, {{ Auth::user()->name }}
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p class="dropdown-item">Hi, {{ Auth::user()->name }}</p>
-                          <a class="dropdown-item" href="/home">Profile</a>
-                          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {{--
+                                <p class="dropdown-item">Hi, {{ Auth::user()->name }}</p> --}}
+                                <a class="dropdown-item" href="/home">Profile</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">Logout
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>  
                         </a>
+                            </div>
                         </div>
-                    </div>
-                    @endif
+                        @endif
                 </div>
             </div>
         </nav>
     </header>
-        @yield("content")
-        <footer>
-            <div class="footer__section">
-                <div class="container">
-                    <div class="row center__footer">
-                        <div class="col-lg-3 mb-lg-0 mb-4">
+    @yield("content")
+    <footer>
+        <div class="footer__section">
+            <div class="container">
+                <div class="row center__footer">
+                    <div class="col-lg-4 mb-lg-0 mb-4">
+                        <a href="#">
+                            <img src="{{ URL::asset('/img/logo/logo.svg')}}" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 mb-lg-0 mb-4">
+                        <div class="footer_menu">
+                            <h1 class="menu__name">Menu</h1>
+                        </div>
+                        <div class="menu__links">
+                            <a href="/" class="menu__link mb-3">Home</a>
+                            <a href="/produk" class="menu__link mb-3">Produk</a>
+                            <a href="/check-out" class="menu__link mb-3">Cart</a>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer_menu">
+                            <h1 class="menu__name">Get In Touch</h1>
+                        </div>
+                        <div class="menu__links mb-5">
+                            <p class="menu__detail">
+                                You'll find your next home, in any style you prefer.
+                            </p>
+                        </div>
+                        <div class="menu-sosmed">
                             <a href="#">
-                                <img src="{{ URL::asset('/img/logo/logo.svg')}}" alt="">
+                                <img src="{{ URL::asset('/img/logo/Facebook icon.svg')}}" class="me-3" alt="">
                             </a>
-                        </div>
-                        <div class="col-lg-3 mb-lg-0 mb-4">
-                            <div class="footer_menu">
-                                <h1 class="menu__name">Menu</h1>
-                            </div>
-                            <div class="menu__links">
-                                <a href="#" class="menu__link mb-3">Home</a>
-                                <a href="#" class="menu__link">Categories</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 d-none d-lg-block">
-                            <div class="footer_menu">
-                                <h1 class="menu__name">Trending</h1>
-                            </div>
-                            <div class="menu__links">
-                                <a href="#" class="menu__link mb-lg-3">
-                                    <img src="{{ URL::asset('/img/product/product-1.png')}}" alt="" class="footer__product me-3">
-                                    <span>Polkadot Dress</span>
-                                </a>
-                                <a href="#" class="menu__link mb-lg-3">
-                                    <img src="{{ URL::asset('/img/product/product-2.png')}}" alt="" class="footer__product me-3">
-                                    <span>Polkadot Dress</span>
-                                </a>
-                                <a href="#" class="menu__link mb-lg-3">
-                                    <img src="{{ URL::asset('/img/product/product-3.png')}}" alt="" class="footer__product me-3">
-                                    <span>Polkadot Dress</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="footer_menu">
-                                <h1 class="menu__name">Get In Touch</h1>
-                            </div>
-                            <div class="menu__links mb-5">
-                                <p class="menu__detail">
-                                    You’ll find your next home, in any style you prefer.
-                                </p>
-                            </div>
-                            <div class="menu-sosmed">
-                                <a href="#">
-                                    <img src="{{ URL::asset('/img/logo/Facebook icon.svg')}}" class="me-3" alt="">
-                                </a>
-                                <a href="#">
-                                    <img src="{{ URL::asset('/img/logo/twitter icon.svg')}}" class="me-3" alt="">
-                                </a>
-                                <a href="#">
-                                    <img src="{{ URL::asset('/img/logo/lindedin icon.svg')}}" class="me-2" alt="">
-                                </a>
-                            </div>
+                            <a href="#">
+                                <img src="{{ URL::asset('/img/logo/twitter icon.svg')}}" class="me-3" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="{{ URL::asset('/img/logo/lindedin icon.svg')}}" class="me-2" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    @yield('scripts')
-    @include('sweetalert::alert')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </div>
+    </footer>
+    @yield('scripts') @include('sweetalert::alert')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

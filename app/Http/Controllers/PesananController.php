@@ -39,6 +39,7 @@ class PesananController extends Controller
             $pesanan->tanggal = $tanggal;
             $pesanan->status = 0;
             $pesanan->jumlah_harga = 0;
+            $pesanan->kode = mt_rand(100, 999);
             $pesanan->save();
         }
 
@@ -92,7 +93,10 @@ class PesananController extends Controller
         $pesanan->jumlah_harga = $pesanan->jumlah_harga-$pesanan_detail->jumlah_harga;
         $pesanan->update();
 
-
+        if($pesanan->jumlah_harga == 0)
+        {
+            $pesanan->delete();
+        }
         $pesanan_detail->delete();
 
         Alert::error('Pesanan Sukses Dihapus', 'Hapus');
@@ -131,6 +135,24 @@ class PesananController extends Controller
         return redirect('sukses');
     }
     public function sukses(){
+        Alert::success('Jangan Lupa Bayar Pesanan Anda', 'Sukses');
         return view('cart.sukses');
+    }
+
+    public function pembayaran($id){
+        $pembayaran = Pesanan::where('id', $id)->first();
+        $pembayaran->status = 2;
+        $pembayaran->update();
+
+        Alert::success('Pembayaran berhasil dikonfirmasi', 'Sukses');
+        return redirect('pengiriman');
+    }
+    public function pengiriman($id){
+        $pembayaran = Pesanan::where('id', $id)->first();
+        $pembayaran->status = 3;
+        $pembayaran->update();
+
+        Alert::success('Produk Sedang dikirim', 'Konfirmasi Kepada Pelanggan');
+        return redirect('pengiriman');
     }
 }

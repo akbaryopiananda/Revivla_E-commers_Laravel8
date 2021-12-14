@@ -16,10 +16,11 @@ class ProductSeeder extends Seeder
     {
         Products::create([
             'nama' => 'Uniqlo',
-            'deskripsi' => 'Brand terpopuler saat ini',
-            'harga' => '450000',
-            'stok' => '49',
-            'gambar' => 'companyname.png',
+            'deskripsi' => 'Blouse tunik berbahan Crepe, bahannya dapat menyerap keringat dengan baik.
+            Cocok digunakan untuk sholat ied maupun acara silahturahmi dilebaran.',
+            'harga' => '150000',
+            'stok' => '29',
+            'gambar' => 'product-3.png',
             'kategori_id' => '1',
         ]);
     }

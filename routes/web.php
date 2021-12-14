@@ -9,11 +9,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HistoryController;
 
 
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/produk', [ProdukController::class, 'index'])->name('index');
+Route::get('/produk/women', [ProdukController::class, 'women'])->name('women');
+Route::get('/produk/men', [ProdukController::class, 'men'])->name('men');
 
 Auth::routes();
 Route::group(['middleware' => ['auth','level:admin, user']], function(){
@@ -58,7 +61,20 @@ Route::group(['middleware' => ['auth','level:admin, user']], function(){
     Route::post('/check_out/{id}', [PesananController::class, 'delete'])->name('delete');
     Route::get('konfirmasi-checkout', [PesananController::class, 'konfirmasi'])->name('konfirmasi');
     Route::get('sukses', [PesananController::class, 'sukses'])->name('sukses');
-    
 
+    // history
+    Route::get('history', [HistoryController::class, 'index'])->name('index');
+    Route::get('history/{id}', [HistoryController::class, 'detail'])->name('detail');
+    Route::post('pembayaran/{id}', [PesananController::class, 'pembayaran'])->name('pembayaran');
+    Route::post('pengiriman/{id}', [PesananController::class, 'pengiriman'])->name('pengiriman');
+
+    // pesanan
+    Route::get('pesanan', [HistoryController::class, 'pesanan'])->name('pesanan');
+    Route::get('pesanans/{id}', [HistoryController::class, 'pesanandetail'])->name('pesanandetail');
+    Route::get('pengiriman', [HistoryController::class, 'pengiriman'])->name('pengiriman');
+    
+    // Daftar Customer
+    Route::get('customer', [UserController::class, 'customer'])->name('customer');
+    Route::get('detailuser/{id}', [UserController::class, 'detailuser'])->name('detailuser');
 
 });

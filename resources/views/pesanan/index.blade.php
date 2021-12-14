@@ -45,8 +45,19 @@
                     </div>
                     <form method="post" action="{{ url('pesanan') }}/{{ $produk->id }}">
                         @csrf
-                        <div class="col">
-                            <input type="text" class="form-control" name="jumlah_pesan" placeholder="Jumlah" required="">
+                        <div class="col-sm-6" style="margin-left: 20px">
+                            {{-- <input type="text" class="form-control" name="jumlah_pesan" placeholder="Jumlah" required="">
+                        </div>
+                        <div > --}}
+                            <div class="quantity mb-lg-3 mb-3">
+                                <button class="plus-btn cart__quantity" type="button" name="button">
+                                    <img src="{{ asset('img/logo/plus.svg') }}" alt="" />
+                                </button>
+                                <input type="text" name="jumlah_pesan" placeholder="0" required="">
+                                <button class="minus-btn cart__quantity" type="button" name="button">
+                                    <img src="{{ asset('img/logo/minus.svg') }}" alt="" />
+                                </button>
+                            </div>
                         </div>
                         <br>
                         <button type="submit" class="btn__primary ms-0 ms-lg-4"><span class="me-2">Masukkan Keranjang</span>

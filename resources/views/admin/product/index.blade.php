@@ -77,7 +77,11 @@
 
                             @endforeach
                         </table>
-                      </div>
+                    </div>
+                    <div class="container">
+                        {{ $data->links("pagination::bootstrap-4") }}
+                    </div>
+                        
                 </div>
                 <!-- /.card -->
             </div>

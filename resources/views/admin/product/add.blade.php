@@ -57,7 +57,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="kategori_id">Kategori</label>
-                                <input type="text"  name="kategori_id"  class="form-control" id="">
+                                <select name="kategori_id" class="form-control">
+                                    <option disabled>Pilih Category</option>
+                                    <option></option>
+                                    @foreach ($data as $cek)
+                                    <option value="{{ $cek->id }}">{{ $cek->kategori }}</option>
+                                    @endforeach
+                                </select>
+                                {{-- <input type="text"  name="kategori_id" value="" placeholder="" class="form-control" id=""> --}}
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button type="submit" class="btn btn-primary">Save</button>

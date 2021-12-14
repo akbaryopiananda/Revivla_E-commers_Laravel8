@@ -16,7 +16,9 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'kategori' => 'Baju',
+            'kategori' => 'Women'
+        ],[
+            'kategori' => 'Men'
         ]);
     }
 }

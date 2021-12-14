@@ -8,7 +8,7 @@ use Alert;
 class CategoryController extends Controller
 {
     public function index(){
-        $data = Category::all();
+        $data = Category::paginate(5);
         return view('admin.category.index', compact('data'));
     }
     public function addcategory(){
